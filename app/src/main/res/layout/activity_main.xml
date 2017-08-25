@@ -14,14 +14,14 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cameraBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageView"
         android:layout_marginStart="36dp"
         android:layout_marginTop="20dp"
-        android:text="Capture"
+        android:text="CAMERA"
         tools:layout_editor_absoluteX="27dp"
         tools:layout_editor_absoluteY="374dp" />
 
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/button"
+        android:layout_alignTop="@+id/cameraBtn"
         android:layout_marginEnd="29dp"
         android:text="Process" />
 
@@ -39,14 +39,14 @@
         android:id="@+id/widthObj"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/button"
-        android:layout_below="@+id/button"
+        android:layout_alignStart="@+id/cameraBtn"
+        android:layout_below="@+id/cameraBtn"
         android:layout_marginTop="22dp"
         android:hint="width"
         android:inputType="number"
         android:textAlignment="center"
         android:textSize="12sp"
-        android:layout_alignEnd="@+id/button"
+        android:layout_alignEnd="@+id/cameraBtn"
         android:focusable="false"/>
 
     <EditText
@@ -68,10 +68,21 @@
         android:id="@+id/galleryBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
+        android:layout_alignBaseline="@+id/cameraBtn"
+        android:layout_alignBottom="@+id/cameraBtn"
         android:layout_centerHorizontal="true"
         android:text="Load"
         android:enabled="false"/>
+
+    <Button
+        android:id="@+id/captureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/widthObj"
+        android:layout_alignEnd="@+id/galleryBtn"
+        android:layout_alignStart="@+id/galleryBtn"
+        android:layout_alignTop="@+id/widthObj"
+        android:text="CAPTURE"
+        android:visibility="invisible" />
 
 </RelativeLayout>

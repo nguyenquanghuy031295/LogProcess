@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     Button AttachImageBtn;
     Button ProcessBtn;
     Button GalleryBtn;
+    Button CameraBtn;
     ImageView imageView;
     Uri imagePassed;
     //
@@ -67,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AttachImageBtn = (Button) findViewById(R.id.button);
+        AttachImageBtn = (Button) findViewById(R.id.captureBtn);
         ProcessBtn = (Button) findViewById(R.id.procBtn);
         GalleryBtn = (Button) findViewById(R.id.galleryBtn);
+        CameraBtn = (Button) findViewById(R.id.cameraBtn);
         imageView = (ImageView)findViewById(R.id.imageView);
         CheckPermission();
         addListenerForAll();
@@ -92,13 +94,13 @@ public class MainActivity extends AppCompatActivity {
                     REQUEST_CODE_READ_EXTERNAL_SOURCE);
         }
 
-//        if (ContextCompat.checkSelfPermission(this,
-//                Manifest.permission.INTERNET)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.INTERNET},
-//                    REQUEST_CODE_INTERNET);
-//        }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    REQUEST_CODE_INTERNET);
+        }
 //
 //        if (ContextCompat.checkSelfPermission(this,
 //                Manifest.permission.ACCESS_NETWORK_STATE)
@@ -209,12 +211,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        CameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCameraBtnClicked();
+            }
+        });
+
         if (ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED) {
             GalleryBtn.setEnabled(true);
         }
+
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+            CameraBtn.setEnabled(true);
+        }
     }
 
+    private void onCameraBtnClicked() {
+        Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
+    }
 
     private void onDetectClicked() {
         if(!isLoadImage) {

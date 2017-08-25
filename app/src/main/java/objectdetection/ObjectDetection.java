@@ -96,7 +96,6 @@ public class ObjectDetection {
         else return null;
     }
 
-
     private Mat DetectAndDisplayLog(Mat frame){
         MatOfRect logs = new MatOfRect();
         Mat frame_gray = new Mat();
